@@ -1,0 +1,13 @@
+what is an RPM?
+redhat package manager
+it is used to bind all software related source codes,configurations files and meta data in one file called rpm(refer linux bible book)
+using rpm, you can install ,update ,query,validate and remove rpm packages.(ask me doubts )
+two things are important while installing packages what are they?(find it in linux bible)
+To make package installation more convenient  they created YUM facility
+yum is used to solve the headache of dependencies.
+with yum the problem of dependencies is solved and bared by linux distribution
+if a package needs dependency package ,it finds it in the predefined location for directory or repository .
+the locations of these repositories would then be stored on the users system in the etc/yum.repos.d directory
+how yum works 
+yum [options] command
+ex: yum install firefox
