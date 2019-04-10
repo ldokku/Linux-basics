@@ -1,0 +1,48 @@
+1)below command gives script.sh for all users executable
+chmod a+x script.sh
+
+2)$cmd1 ; cmd2 
+equivalent to
+$cmd1
+$cmd2
+
+3)To print text in colours
+echo -e "\e[1;31m this is red text \e[0m" (u get this  text in red)
+black =40;red=41,green=42,yellow=43,blue=44,magenta=45,cyan 46,white=47
+
+
+4)in bash, the value for every variable is string.
+there are variables used by the shell environment and the operating environment to store special values,
+which are called environmental variables.
+var="value" #assignment of value to variable var.
+environmental variables are variables that are not defined in the current process ,but are received from the parent process
+
+5) palying with file decriptors and redirection
+0:stdin(standard input)
+1:stdout(standard output)
+2:stderr(standard error)
+command | tee FILE1
+above output of command is taken has input to tee process and it sends as output and stores in FILE1
+> AND >> operators are different but both of them redirect text to a file , but the first one empties the file and the writes 
+second one adds the output to the end of the existing file
+redirection from file to command:
+$ cmd < file
+redirection from a text block enclosed within a script
+#!/bin/bash
+cat<<EOF>log.txt
+LOG FILE HEADER
+EOF
+the lines that appear between cat<<EOF>log.txt and the next EOF will appear as stdin data
+
+
+
+
+
+
+
+
+
+
+
+
+
