@@ -35,6 +35,114 @@ EOF
 the lines that appear between cat<<EOF>log.txt and the next EOF will appear as stdin data
 
 
+6)aliases: basically shortcut that takes the place of typing a long command sequence.
+$ alias install='yum install '
+
+7)functions and arguments
+
+we can create funtion to perform task and we can also create funtions that take parameters as you can see in the following:
+fname()
+{
+statements
+}
+
+$fname #executes funtion
+
+$fname arg1 arg2 ; #passing args
+
+fname()
+{
+echo $1,$2; #Accessing arg1 and arg2
+echo "$@";#printing all argument as list at once 
+echo "$*";#similar to $@ but arguments taken as single entity
+}
+
+recursive funtions are supported in bash shell
+
+export functions
+
+export -f fname(like environmental variables)
+
+reading the return value(status) of a command
+cmd;
+echo $?;
+
+ex:
+#!/bin/bash
+CMD="command"
+exit status
+$CMD
+if [ $? -eq 0 ];
+then
+    echo "$CMD executed succesfully"
+else 
+    echo "$CMD terminated unsuccesfully"
+fi
+
+let us start combining two commands
+$ ls | cat -n > out.txt
+
+output of ls is passed to cat -n and puts line numbers into inout recieved through stdin
+therfore o/p is redirected to out.txt
+
+
+cmd_output=$(COMMANDS)
+ex: cmd_output=$(ls | cat -n)
+echo $cmd_output
+
+
+comparisions and tests 
+using an if condition 
+
+>if condition;
+then 
+    commands;
+fi
+
+>if condition 
+then  
+    commands;
+else if condition ; then 
+    commands;
+else 
+    commands;
+fi
+
+
+
+>performing mathematical comaparisons 
+[ $var -eq 0 ] #it returns true when $var equal to 0
+[ $var -ne 0 ] #it returns true when $var is not equal 0
+
+pg 49 linux shell script cookbook for more options
+
+ex:
+fpath="/etc/passwd"
+if [ -e $fpath ]; then 
+     echo File exists;
+else
+     echo Does not exist;
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
