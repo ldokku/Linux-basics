@@ -1,0 +1,50 @@
+this file is my reading pof Pro GIT book
+there is one more file about git process in ftlinux
+version control : system that records changes to a file or set of files overtime
+so that you can recall specific versions later.
+centralised version control system:one developer should collaborate with developers 
+on other systems so for this cvcs is used .example : subversion and perforce.
+
+Distributed version control systems:
+example : git
+in a dvcs clients dont just check out the latest snapshot of the files : they fully mirror
+the repository
+
+working with remotes:
+remote repositories are versions of your project that are hosted on the internet or network somewhere
+
+branching :
+branching means you diverge from the main line of development and continue to do work without
+messing with that main line .
+
+
+lets start with example:
+
+git add a1 a2 a3
+git commit -m 'example'
+
+now 
+When you create the commit by running git commit, Git checksums each
+subdirectory (in this case, just the root project directory) and stores those tree
+objects in the Git repository. Git then creates a commit object that has the metadata and a pointer to the root project tree so it can re-create that snapshot
+when needed.
+Your Git repository now contains five objects: one blob for the contents of
+each of your three files, one tree that lists the contents of the directory and
+specifies which file names are stored as which blobs, and one commit with the
+pointer to that root tree and all the commit metadata.
+
+check pg 82 of ProGIT for clear diagram .(or read the book full  if you are curious)
+
+If you make some changes and commit again, the next commit stores a
+pointer to the commit that came immediately before it.
+
+
+A branch in Git is simply a lightweight movable pointer to one of these commits. The default branch name in Git is master. As you start making commits,
+you’re given a master branch that points to the last commit you made. Every
+time you commit, it moves forward automatically.
+
+
+to delete branch
+$ git branch -d hotfix
+Deleted branch hotfix (3a0874c).
+
