@@ -1,0 +1,67 @@
+struct device //this is what driver see ...something top of this
+*universal structure
+*belongs to bus or class
+struct device_type
+*same bus ,different type
+ struct device_driver //specific bustype
+ *controls a device
+ *probe/remove
+ *shutdown/suspend/resume
+ *default attributes
+  struct bus_type
+  *binds devices and drivers
+  *matching
+  *uevents
+  *shutdown
+  bus responsibilities 
+  *register bus
+  *create devices
+  *register drivers
+  *suspend/resume
+   create a device
+   * set the bus type
+   * set the parent pointer
+   * set atttributes groups
+   * device_initialize()
+   *..other stuff..
+   * device_add()
+   we can also use device_register for both device_add and device_initialize()
+   
+   
+   Register a driver:
+   * set the bus type
+   * set up the probe/release
+   * set the module ownership
+   * driver_register()
+   
+   NOTE:
+   bus,device and drivers are for the physical devices like bus or serial device on bus
+   class is for how devices interact with userspace like tty,gpio etc no drivers binded to it
+   
+   struct class
+   *user visable devices
+   *yes, its a bus...
+   *suspend/resume
+   *release
+   *default attributes
+   
+   class responsibilities
+   *class_create/class_register
+   *reserve major/minor
+   *use in device_create
+   *device_destroy
+   *free major/minor
+   *suspend/resume if wanted
+   
+   driver writer hints
+   *attribute groups only //can be changed dynamically 
+   *never call sysfs_*()
+   *never use platform devices
+   
+   raw sysfs/kobjects?
+   do not do it
+   really no.
+   use a class or a bus
+   please no
+   
+    
