@@ -1,0 +1,35 @@
+i am makeing  this document to make new file system called  Lfs(Linus file system).
+lets learn about file system
+*** if you understand the on disk organisation data structures and access methods of file system, you have developed 
+a good mental model of how it truly works.
+  **) Overall organisation
+    *)the first thing we will need to do is divide the disk into blocks;simple filesystem use one block size.
+    *)lets use a commonly used size of 4kb each block
+    *)Assume we have a really small disk, witj just 64 blocks
+    *)lets call the region of the disk we use for user data the data region and we reserve a 
+    fixed portion of the disk for these blocks. say 54 out of 64 blocks on the disk.
+    *)file system has to track information about each file systems.this information is a key piece of metadata
+    and tracks things like which data blocks comprise a file,size of the file,its owner and access rights
+    *)To store this information file systems usually have a structure called an inode.
+    *)to accommadate inodes , we will need to reserve some space on the disk for them as well. lets call this portion of the disk
+    the inode table.which simply holds an array of on disk inodes.assuming that we use 5 of 64 blocks for inodes.
+    *)we should note here that inodes are typically not that big , for examole 128 or 256 bytes per inode,a 4kb block can hold 16 inodes,
+    and our file system above contains 80 total inodes.it means maximum files can be placed on 64 blocks disk.
+    *)our file system thus far has data blocks and inodes but one componenet is missing..please guess it and dont see down  ...puta
+    *)the way to track whether a inodes or data blocks are free or allocated. such allocation structures are a requisite element in any file system.
+    *)Many allocation-tracking methods are possible, of course. For example, we could use a free list that points to the first free block, 
+    which then points to the next free block, and so forth. We instead choose a simple and
+    popular structure known as a bitmap, one for the data region (the data bitmap), and one for the inode table (the inode bitmap).
+    *)A bitmap is a simple structure : each bit is used to indicate whether the corresponding object/block is free (0) or in use(1).
+    *)lets give two blocks for indoe bit map and data bit map...2 out 0f 64 blocks are used by bitmaps.
+    *)puta reader will know that there is one block letf in the on disk layout..thta is used for super block will have info about number of inodes, data regions,where inode table begins..and 
+    it will also include magic number to identify fiesystem.
+  **)File Organization : The Inode
+    *)one of the most important on-disk structures of a file system is the inode
+    *)virtually all file systems have structure similar to this.
+    *)inode is called as index node.
+    *)each inode is referred to by a number (called the i-number),which we have earlier called the low level name of the file.
+    *)In fs, given an inumber , you should be directly be able to calculate where on the disk the corresponding indoe is located.
+    *)inside each inode is virtually all of the information you need about a file: it type,its size,the number of blocks allocted to it,
+    protection information,some time information..we refer to all of this as metadata.
+    *)
